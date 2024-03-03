@@ -1,0 +1,15 @@
+## FLEXPKG Format Version 1 By VPeti
+
+pkg = nano vim
+flatpak = vlc
+git = https://github.com/VPeti1/CW-I.git
+git2 = https://github.com/VPeti1/OpenCW.git
+    #There could be a third one
+cmd = echo Hello world
+cmd2 = echo Hello world 2
+    #There could be a third one
+get = https://clipart-library.com/data_images/6103.png
+get2 = https://cdn.pixabay.com/photo/2016/07/07/16/46/dice-1502706_640.jpg
+    #There could be a third one
+sh = example.sh
+batch = example.bat
