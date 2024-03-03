@@ -14,12 +14,12 @@ def main():
             if first_line == "## FLEXPKG Format Version 1 By VPeti":
                 print("Valid FLEXPKG file detected")
                 time.sleep(2)
-                # TODO:Enable this subprocess.call(['python', 'pkg.py'])
-                # TODO:Enable this subprocess.call(['python', 'git.py'])
-                # TODO:Enable this subprocess.call(['python', 'get.py'])
-                # TODO:Enable this subprocess.call(['python', 'flat.py'])
-                # TODO:Enable this subprocess.call(['python', 'cmd.py'])
-                # TODO:Enable this subprocess.call(['python', 'batch.py'])
+                subprocess.call(['python', 'pkg.py'])
+                subprocess.call(['python', 'git.py'])
+                subprocess.call(['python', 'get.py'])
+                subprocess.call(['python', 'flat.py'])
+                subprocess.call(['python', 'cmd.py'])
+                subprocess.call(['python', 'batch.py'])
             else:
                 print("The file isnt a valid FLEXPKG file!")
     except FileNotFoundError:
