@@ -13,3 +13,5 @@ get2 = https://cdn.pixabay.com/photo/2016/07/07/16/46/dice-1502706_640.jpg
     #There could be a third one
 sh = example.sh
 batch = example.bat
+osr = lin
+    #Options:lin,win

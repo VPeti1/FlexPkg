@@ -16,6 +16,8 @@ Downloads a file using WGET
 Runs a .sh file (Linux only)
 ## batch
 Runs a .bat file (Windows only)
+## osr
+Specifies a required os
 
 # Execution order:
-pkg,git,get,flat,cmd and batch
+osr,pkg,git,get,flat,cmd and batch

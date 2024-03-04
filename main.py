@@ -14,6 +14,7 @@ def main():
             if first_line == "## FLEXPKG Format Version 1 By VPeti":
                 print("Valid FLEXPKG file detected")
                 time.sleep(2)
+                subprocess.call(['python', 'osr.py'])
                 subprocess.call(['python', 'pkg.py'])
                 subprocess.call(['python', 'git.py'])
                 subprocess.call(['python', 'get.py'])
