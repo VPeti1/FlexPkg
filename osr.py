@@ -51,5 +51,5 @@ def check_osr_line(filename):
     except FileNotFoundError:
         print(f"ERROR READING FROM FILE!")
 
-# Usage example:
+
 check_osr_line("flex.pkg")
