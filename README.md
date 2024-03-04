@@ -1,5 +1,5 @@
 # FlexPkg
-A new way of automation
+A new way to install programs
 
 # How to install?
 ## Install Python
