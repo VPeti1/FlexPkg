@@ -1,5 +1,13 @@
 import time
+import platform
+import sys
 
+def detect_os():
+    os_name = platform.system()
+    if os_name == "Linux":
+        return "linux"
+    else:
+        return "windows"
 
 
 def main(os):
@@ -7,29 +15,30 @@ def main(os):
     if os == 0:
         pass  # Do nothing
     elif os == 1:
-        system_type = input("Do you have Linux or Windows? ").lower()
+        system_type = detect_os()
         if system_type == "windows":
-            print("Unsupported FLEXPKG file!")
+            print("Unsupported FLEXPKG file for this os!")
             time.sleep(1.5)
-            quit()
+            sys.exit(1)
             
         elif system_type == "linux":
-            print("Beginning install")
+            sys.exit(0)
+
         else:
-            print("Invalid input. Please enter 'Linux' or 'Windows'.")
+            pass
     elif os == 2:
         # Same behavior as when os == 1
-        system_type = input("Do you have Linux or Windows? ").lower()
+        system_type = detect_os()
         if system_type == "windows":
-            print("Beginning install")
+            sys.exit(0)
         elif system_type == "linux":
-            print("Unsupported FLEXPKG file!")
+            print("Unsupported FLEXPKG file for this os!")
             time.sleep(1.5)
-            quit()
+            sys.exit(1)
         else:
             pass
     else:
-        print("Invalid value for 'os'. Please enter 0, 1, or 2.")
+        pass
 
 def check_osr_line(filename):
     try:
@@ -49,7 +58,7 @@ def check_osr_line(filename):
             a = os
             main(a)
     except FileNotFoundError:
-        print(f"ERROR READING FROM FILE!")
+        pass
 
 
 check_osr_line("flex.pkg")

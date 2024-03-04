@@ -1,6 +1,14 @@
 import time
 import os
 import subprocess
+import platform
+
+def detect_os():
+    os_name = platform.system()
+    if os_name == "Linux":
+        return "linux"
+    else:
+        return "windows"
 
 file_path = 'flex.pkg'
 
@@ -18,27 +26,28 @@ try:
         flex = pkg_line.replace("pkg = ", "")
         print(f"Found packages: {flex}")
         pm = ""
-        distro = input("What os are you using? (arch/debian/fedora/windows): ").lower()
-        if distro == "arch":
-            pm = "sudo pacman -S "
-        elif distro == "debian":
-            pm = "sudo apt install "
-        elif distro == "fedora":
-            pm = "sudo yum install "
-        elif distro == "windows":
+        chk = detect_os()
+        if chk == "linux":
+            distro = input("What os are you using? (arch/debian/fedora): \n(Derivatives included)\n").lower()
+            if distro == "arch":
+                pm = "sudo pacman -S "
+            elif distro == "debian":
+                pm = "sudo apt install "
+            elif distro == "fedora":
+                pm = "sudo yum install "
+            else:
+                print("Unknown os. Please enter 'arch', 'debian' or 'fedora'.")
+                subprocess.call(['python', 'pkg.py'])
+        elif chk == "windows":
             pm = "choco install "
             print("Make sure you have choco installed")
             time.sleep(1.5)
         else:
-            print("Unknown os. Please enter 'arch', 'debian','windows' or 'fedora'.")
-            subprocess.call(['python', 'pkg.py'])
+            print("Unsupported os detected!")
         time.sleep(1.5)
         os.system(pm + flex)
+        print("Packages installed succesfully")
 
-
-
-        
-        
 
 except FileNotFoundError:
     print(f"An error occured while trying to read from the FLEXPKG file")

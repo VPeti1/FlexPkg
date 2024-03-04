@@ -1,6 +1,14 @@
 import time
 import os
 import subprocess
+import platform
+
+def detect_os():
+    os_name = platform.system()
+    if os_name == "Linux":
+        return "linux"
+    else:
+        return "windows"
 
 file_path = 'flex.pkg'
 
@@ -18,14 +26,14 @@ try:
         flex = flatpak_line.replace("flatpak = ", "")
         print(f"Found packages: {flex}")
         pm = ""
-        distro = input("What os are you using? (linux/windows): ").lower()
+        distro = detect_os()
         if distro == "linux":
             pm = "flatpak install " + flex
         elif distro == "windows":
             pm = "echo Unsupported action!"
             time.sleep(1.5)
         else:
-            print("Unknown os. Please enter 'windows' or 'linux'.")
+            print("Unknown os.")
             subprocess.call(['python', 'flat.py'])
         time.sleep(1.5)
         os.system(pm)

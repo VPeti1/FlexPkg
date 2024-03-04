@@ -1,6 +1,14 @@
 import time
 import os
 import subprocess
+import platform
+
+def detect_os():
+    os_name = platform.system()
+    if os_name == "Linux":
+        return "linux"
+    else:
+        return "windows"
 
 file_path = 'flex.pkg'
 
@@ -18,15 +26,14 @@ try:
         flex = sh_line.replace("sh = ", "")
         print(f"Found found sh file: {flex}")
         pm = ""
-        distro = input("What os are you using? (linux/windows): ").lower()
+        distro = detect_os()
         if distro == "linux":
             pm = "sh " + flex
         elif distro == "windows":
-            pm = "echo Unsupported action!"
+            pm = "echo Unsupported os!"
             time.sleep(1.5)
         else:
-            print("Unknown os. Please enter 'windows' or 'linux'.")
-            subprocess.call(['python', 'sh.py'])
+            pass
         time.sleep(1.5)
         os.system(pm)
 

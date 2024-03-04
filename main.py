@@ -3,6 +3,17 @@ import subprocess
 import time
 
 
+def osr():
+    
+    try:
+        result = subprocess.run(['python', 'osr.py'], check=True)
+        if result.returncode == 10:
+            pass
+        else:
+            pass
+    except subprocess.CalledProcessError as e:
+        quit()
+
 def main():
     print(" /$$$$$$$$ /$$                     /$$$$$$$  /$$                \n| $$_____/| $$                    | $$__  $$| $$                \n| $$      | $$  /$$$$$$  /$$   /$$| $$  \\ $$| $$   /$$  /$$$$$$ \n| $$$$$   | $$ /$$__  $$|  $$ /$$/| $$$$$$$/| $$  /$$/ /$$__  $$\n| $$__/   | $$| $$$$$$$$ \\  $$$$/ | $$____/ | $$$$$$/ | $$  \\ $$\n| $$      | $$| $$_____/  >$$  $$ | $$      | $$_  $$ | $$  | $$\n| $$      | $$|  $$$$$$$ /$$/\\  $$| $$      | $$ \\  $$|  $$$$$$$\n|__/      |__/ \\_______/|__/  \\__/|__/      |__/  \\__/ \\____  $$\n                                                       /$$  \\ $$\n                                                      |  $$$$$$/\n                                                       \\______/ ")
     time.sleep(1)
@@ -14,7 +25,7 @@ def main():
             if first_line == "## FLEXPKG Format Version 1 By VPeti":
                 print("Valid FLEXPKG file detected")
                 time.sleep(2)
-                subprocess.call(['python', 'osr.py'])
+                osr()
                 subprocess.call(['python', 'pkg.py'])
                 subprocess.call(['python', 'git.py'])
                 subprocess.call(['python', 'get.py'])

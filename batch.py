@@ -1,6 +1,14 @@
 import time
 import os
 import subprocess
+import platform
+
+def detect_os():
+    os_name = platform.system()
+    if os_name == "Linux":
+        return "linux"
+    else:
+        return "windows"
 
 file_path = 'flex.pkg'
 
@@ -11,22 +19,21 @@ try:
                 batch_line = line.strip()
                 break  # Stop searching after finding the first occurrence
         else:
-            print(f"No batch packages detected in the flex.pkg file")
+            print(f"No batch invokes detected in the flex.pkg file")
             batch_line = None
 
     if batch_line:
         flex = batch_line.replace("batch = ", "")
         print(f"Found found batch file: {flex}")
         pm = ""
-        distro = input("What os are you using? (linux/windows): ").lower()
+        distro = detect_os()
         if distro == "linux":
-            pm = "echo Unsupported action!"
+            pm = "echo Unsupported os!"
             time.sleep(1.5)
         elif distro == "windows":
             pm = "cmd /c " + flex
         else:
-            print("Unknown os. Please enter 'windows' or 'linux'.")
-            subprocess.call(['python', 'batch.py'])
+            pass
         time.sleep(1.5)
         os.system(pm)
 
