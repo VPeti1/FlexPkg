@@ -30,11 +30,12 @@ try:
         if distro == "linux":
             pm = "flatpak install " + flex
         elif distro == "windows":
-            pm = "echo Unsupported action!"
+            print("Unsupported os")
             time.sleep(1.5)
+            quit()
         else:
             print("Unknown os.")
-            subprocess.call(['python', 'flat.py'])
+            quit()
         time.sleep(1.5)
         os.system(pm)
 

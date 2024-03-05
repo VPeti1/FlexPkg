@@ -44,6 +44,7 @@ try:
             time.sleep(1.5)
         else:
             print("Unsupported os detected!")
+            quit()
         time.sleep(1.5)
         os.system(pm + flex)
         print("Packages installed succesfully")
@@ -51,3 +52,4 @@ try:
 
 except FileNotFoundError:
     print(f"An error occured while trying to read from the FLEXPKG file")
+    quit()

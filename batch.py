@@ -28,12 +28,13 @@ try:
         pm = ""
         distro = detect_os()
         if distro == "linux":
-            pm = "echo Unsupported os!"
+            print("Unsupported os")
             time.sleep(1.5)
+            quit()
         elif distro == "windows":
             pm = "cmd /c " + flex
         else:
-            pass
+            quit()
         time.sleep(1.5)
         os.system(pm)
 

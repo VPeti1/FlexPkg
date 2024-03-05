@@ -1,6 +1,14 @@
 import os
 import time
 import subprocess
+import platform
+
+def detect_os():
+    os_name = platform.system()
+    if os_name == "Linux":
+        return "linux"
+    else:
+        return "windows"
 
 # Define the file path
 file_path = "flex.pkg"
@@ -33,22 +41,25 @@ if os.path.exists(file_path):
         print(f"{git3}")
 
     print("Cloning these with git")
+    pm = ""
     time.sleep(1.5)
     flex = "git"
-    distro = input("What os are you using? (arch/debian/fedora/windows): ").lower()
-    if distro == "arch":
-        pm = "sudo pacman -S "
-    elif distro == "debian":
-        pm = "sudo apt install "
-    elif distro == "fedora":
-        pm = "sudo yum install "
-    elif distro == "windows":
+    os = detect_os()
+    if os == "linux":
+        distro = input("What os are you using? (arch/debian/fedora/windows): ").lower()
+        if distro == "arch":
+            pm = "sudo pacman -S "
+        elif distro == "debian":
+            pm = "sudo apt install "
+        elif distro == "fedora":
+            pm = "sudo yum install "
+        else:
+            print("Unknown os. Please enter 'arch', 'debian','windows' or 'fedora'.")
+            subprocess.call(['python', 'git.py'])
+    else:
         pm = "choco install "
         print("Make sure you have choco installed")
-        time.sleep(1.5)
-    else:
-        print("Unknown os. Please enter 'arch', 'debian','windows' or 'fedora'.")
-        subprocess.call(['python', 'git.py'])
+        time.sleep(0.5)
     print("Installing Git")
     time.sleep(1)
     os.system(pm + flex)
@@ -69,3 +80,4 @@ if os.path.exists(file_path):
 
 else:
     print(f"Error reading from file!")
+    quit()

@@ -30,10 +30,13 @@ try:
         if distro == "linux":
             pm = "sh " + flex
         elif distro == "windows":
-            pm = "echo Unsupported os!"
+            print("Unsupported os!")
             time.sleep(1.5)
+            quit()
         else:
-            pass
+            print("Unsupported os!")
+            time.sleep(1.5)
+            quit()
         time.sleep(1.5)
         os.system(pm)
 
@@ -44,3 +47,4 @@ try:
 
 except FileNotFoundError:
     print(f"An error occured while trying to read from the FLEXPKG file")
+    quit()
