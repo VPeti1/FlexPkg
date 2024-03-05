@@ -16,4 +16,4 @@ sudo chmod +x installer.out
 ## Run it
 ./installer.out
 ## Now you can open FlexPkg by typing in flex in your terminal
-The folder you are running flex fromm needs to have a valid flex.pkg file
+The folder you are running flex from needs to have a valid flex.pkg file
