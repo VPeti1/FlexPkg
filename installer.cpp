@@ -13,15 +13,17 @@ namespace fs = std::filesystem;
 
 
 void dw() {
+    clear
     std::string distro;
-    std::cout << "Enter your Linux distribution (arch/debian/fedora): ";
+    std::cout << "Enter your Linux distribution (arch/debian/fedora):\n";
+    std::cout << "(Derivatives included)\n";
     std::cin >> distro;
     if (distro == "arch") {
-        system("sudo pacman -S git wget");
+        system("sudo pacman -S git wget python");
     } else if (distro == "debian") {
-        system("sudo apt-get install git wget");
+        system("sudo apt-get install git wget python");
     } else if (distro == "fedora") {
-        system("sudo dnf install git wget");
+        system("sudo dnf install git wget python");
     }
     else if (distro == "skip") {
 
@@ -37,6 +39,7 @@ int main() {
     std::cout << "By VPeti" << std::endl;
     sleep(2);
     dw();
+    clear
     system("read -p 'Press Enter to continue...'");
     system("sudo rm -rf /usr/flex/");
     system("sudo rm -rf /bin/flex");
