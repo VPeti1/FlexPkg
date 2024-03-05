@@ -1,7 +1,21 @@
 import os
 import subprocess
 import time
+import platform
 
+def detect_os():
+    os_name = platform.system()
+    if os_name == "Linux":
+        return "linux"
+    else:
+        return "windows"
+
+def chococ():
+    os = detect_os()
+    if os == "linux":
+        pass
+    else:
+        subprocess.run('chococ.exe', shell=True)
 
 def osr():
     
@@ -24,7 +38,9 @@ def main():
             first_line = file.readline().strip()
             if first_line == "## FLEXPKG Format Version 1 By VPeti":
                 print("Valid FLEXPKG file detected")
-                time.sleep(2)
+                time.sleep(1.5)
+                chococ()
+                time.sleep(0.5)
                 osr()
                 subprocess.call(['python', 'pkg.py'])
                 subprocess.call(['python', 'git.py'])
