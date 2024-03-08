@@ -4,10 +4,9 @@
 A new way to install programs
 
 # How to install on Windows?
-## Install Python
-## Clone the repo
-## Run main.py from your terminal
-You need to put a valid flex.pkg file insto the cloned repos folder
+## Download the installer.exe file from the 'wininstall' folder
+Warning! This file dosnt contain a signiture so defender might detect a false positive
+## Run the file as an administrator
 
 # How to install on Linux?
 ## Download the installer.out
