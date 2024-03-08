@@ -65,7 +65,7 @@ int main() {
     system("pause");
     system("mkdir C:\\Flex");
     system("git clone https://github.com/VPeti1/FlexPkg.git C:\\Flex");
-    system("wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/run.exe -O /bin/flex");
+    system("wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/run.exe -O C:\\Windows\\System32\\flex.exe");
     system("del C:\\Flex\\chococ.cpp C:\\Flex\\chococ.exe C:\\Flex\\installer.cpp C:\\Flex\\installer.out C:\\Flex\\LICENSE C:\\Flex\\README.md C:\\Flex\\run.cpp C:\\Flex\\run.out");
     system("rmdir /s /q C:\\Flex\\examples");
     system("rmdir /s /q C:\\Flex\\wininstall");
