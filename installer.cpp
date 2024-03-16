@@ -47,7 +47,7 @@ int main() {
     system("sudo git clone https://github.com/VPeti1/FlexPkg.git /usr/flex");
     system("sudo wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/run.out -O /bin/flex");
     system("sudo chmod +x /bin/flex");
-    system("sudo rm -r /usr/flex/chococ.cpp /usr/flex/chococ.exe /usr/flex/installer.cpp /usr/flex/installer.out /usr/flex/LICENSE /usr/flex/README.md /usr/flex/run.cpp /usr/flex/run.out /usr/flex/examples");
+    system("sudo rm -r /usr/flex/chococ.cpp /usr/flex/chococ.exe /usr/flex/installer.cpp /usr/flex/installer.out /usr/flex/LICENSE /usr/flex/README.md /usr/flex/run.cpp /usr/flex/run.out /usr/flex/examples /usr/flex/wininstall");
     std::cout << "FlexPkg Installer Completed!" << std::endl;
     system("exit");
 }
