@@ -1,7 +1,22 @@
-import os
 import subprocess
 import time
 import platform
+
+def check_pipe_character(filename):
+    try:
+        with open(filename, 'r') as file:
+            content = file.read()
+            if '|' in content:
+                print("WARNNG!\n Unsafe flex.pkg file detected!")
+                con = input("Do you want to continue? (yes or no)\n")
+                if con == "yes":
+                    pass
+                else:
+                    quit()
+            else:
+                pass
+    except FileNotFoundError:
+        pass
 
 def detect_os():
     os_name = platform.system()
@@ -32,13 +47,13 @@ def main():
     print(" /$$$$$$$$ /$$                     /$$$$$$$  /$$                \n| $$_____/| $$                    | $$__  $$| $$                \n| $$      | $$  /$$$$$$  /$$   /$$| $$  \\ $$| $$   /$$  /$$$$$$ \n| $$$$$   | $$ /$$__  $$|  $$ /$$/| $$$$$$$/| $$  /$$/ /$$__  $$\n| $$__/   | $$| $$$$$$$$ \\  $$$$/ | $$____/ | $$$$$$/ | $$  \\ $$\n| $$      | $$| $$_____/  >$$  $$ | $$      | $$_  $$ | $$  | $$\n| $$      | $$|  $$$$$$$ /$$/\\  $$| $$      | $$ \\  $$|  $$$$$$$\n|__/      |__/ \\_______/|__/  \\__/|__/      |__/  \\__/ \\____  $$\n                                                       /$$  \\ $$\n                                                      |  $$$$$$/\n                                                       \\______/ ")
     time.sleep(1)
     file_path = "flex.pkg"
-
     try:
         with open(file_path, 'r') as file:
             first_line = file.readline().strip()
             if first_line == "## FLEXPKG Format Version 1 By VPeti":
                 print("Valid FLEXPKG file detected")
                 time.sleep(1.5)
+                check_pipe_character(file_path)
                 chococ()
                 time.sleep(0.5)
                 osr()
