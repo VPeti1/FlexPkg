@@ -26,18 +26,18 @@ if os.path.exists(file_path):
     get3 = content.split("get3 =")[1].split()[0].strip() if "get3 =" in content else None
 
     # Print the extracted values 
-    print("Cloning these with get")     # Deez Nuts
+    print("Downloading the files with WGET")     # Deez Nuts
     if get == None:
-        u = "sless"
+        pass
     else:
         print(f"{get}")
     if get2 == None:
-        u = "sless"
+        pass
     else:
         print(f"{get2}")
 
     if get3 == None:
-        u = "sless"
+        pass
     else:
         print(f"{get3}")
 
@@ -46,36 +46,35 @@ if os.path.exists(file_path):
     flex = "wget"
     pm = ""
     time.sleep(1.5)
-    os = detect_os()
-    if os == "linux":
-        distro = input("What os are you using? (arch/debian/fedora/windows): ").lower()
-        if distro == "arch":
-            pm = "sudo pacman -S "
-        elif distro == "debian":
-            pm = "sudo apt install "
-        elif distro == "fedora":
-            pm = "sudo yum install "
-        else:
-            print("Unknown os. Please enter 'arch', 'debian','windows' or 'fedora'.")
-            subprocess.call(['python', 'git.py'])
+    pm = ""
+    time.sleep(1.5)
+    flex = "git"
+    if os.path.isfile('/usr/flex/arch.cw'):
+        pm = "sudo pacman -S "
+    elif os.path.isfile('/usr/flex/deb.cw'):
+        pm = "sudo apt install "
+    elif os.path.isfile('/usr/flex/fed.cw'):
+        pm = "sudo yum install "
+    elif os.path.isfile('/usr/flex/suse.cw'):
+        pm = "sudo zypper install "
+    elif os.path.isfile('/usr/flex/void.cw'):
+        pm = "sudo xbps-install "
     else:
         pm = "choco install "
-        print("Make sure you have choco installed")
-        time.sleep(0.5)
     print("Installing get")
     time.sleep(1)
     os.system(pm + flex)
     if get == None:
-        u = "sless"
+        pass
     else:
         os.system("wget " + get)
     if get2 == None:
-        u = "sless"
+        pass
     else:
         os.system("wget " + get2)
 
     if get3 == None:
-        u = "sless"
+        pass
     else:
         os.system("wget " + get3)
     print("Files downloaded successfully")

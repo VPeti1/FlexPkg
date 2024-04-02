@@ -18,6 +18,3 @@ Runs a .sh file (Linux only)
 Runs a .bat file (Windows only)
 ## osr
 Specifies a required os
-
-# Execution order:
-osr,pkg,git,get,flat,cmd and batch

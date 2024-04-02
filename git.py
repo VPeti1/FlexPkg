@@ -1,14 +1,5 @@
 import os
 import time
-import subprocess
-import platform
-
-def detect_os():
-    os_name = platform.system()
-    if os_name == "Linux":
-        return "linux"
-    else:
-        return "windows"
 
 # Define the file path
 file_path = "flex.pkg"
@@ -27,16 +18,16 @@ if os.path.exists(file_path):
     # Print the extracted values 
     print("Cloning these with git")     # Deez Nuts
     if git == None:
-        u = "sless"
+        pass
     else:
         print(f"{git}")
     if git2 == None:
-        u = "sless"
+        pass
     else:
         print(f"{git2}")
 
     if git3 == None:
-        u = "sless"
+        pass
     else:
         print(f"{git3}")
 
@@ -44,36 +35,32 @@ if os.path.exists(file_path):
     pm = ""
     time.sleep(1.5)
     flex = "git"
-    os = detect_os()
-    if os == "linux":
-        distro = input("What os are you using? (arch/debian/fedora/windows): ").lower()
-        if distro == "arch":
-            pm = "sudo pacman -S "
-        elif distro == "debian":
-            pm = "sudo apt install "
-        elif distro == "fedora":
-            pm = "sudo yum install "
-        else:
-            print("Unknown os. Please enter 'arch', 'debian','windows' or 'fedora'.")
-            subprocess.call(['python', 'git.py'])
+    if os.path.isfile('/usr/flex/arch.cw'):
+        pm = "sudo pacman -S "
+    elif os.path.isfile('/usr/flex/deb.cw'):
+        pm = "sudo apt install "
+    elif os.path.isfile('/usr/flex/fed.cw'):
+        pm = "sudo yum install "
+    elif os.path.isfile('/usr/flex/suse.cw'):
+            pm = "sudo zypper install "
+    elif os.path.isfile('/usr/flex/void.cw'):
+            pm = "sudo xbps-install "
     else:
         pm = "choco install "
-        print("Make sure you have choco installed")
-        time.sleep(0.5)
     print("Installing Git")
     time.sleep(1)
     os.system(pm + flex)
     if git == None:
-        u = "sless"
+        pass
     else:
         os.system("git clone " + git)
     if git2 == None:
-        u = "sless"
+        pass
     else:
         os.system("git clone " + git2)
 
     if git3 == None:
-        u = "sless"
+        pass
     else:
         os.system("git clone " + git3)
     print("Repos cloned successfully")

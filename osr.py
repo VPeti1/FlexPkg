@@ -13,7 +13,7 @@ def detect_os():
 def main(os):
     os = int(os)  # Convert os to an integer
     if os == 0:
-        pass  # Do nothing
+        pass
     elif os == 1:
         system_type = detect_os()
         if system_type == "windows":
@@ -27,7 +27,6 @@ def main(os):
         else:
             pass
     elif os == 2:
-        # Same behavior as when os == 1
         system_type = detect_os()
         if system_type == "windows":
             sys.exit(0)
@@ -45,7 +44,7 @@ def check_osr_line(filename):
         with open(filename, 'r') as file:
             for line in file:
                 if "osr = " in line:
-                    # Extract the text after "osr = "
+                    # Extract the text after "osr = "gn
                     text_after_osr = line.split("osr = ")[1].strip()
                     if text_after_osr == "lin":
                         os = "1"

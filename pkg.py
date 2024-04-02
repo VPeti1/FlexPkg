@@ -19,37 +19,27 @@ try:
                 pkg_line = line.strip()
                 break  # Stop searching after finding the first occurrence
         else:
-            print(f"No packages detected in the flex.pkg file")
             pkg_line = None
 
     if pkg_line:
-        flex = pkg_line.replace("pkg = ", "")
+        pm = ''
+        flex = pkg_line.replace("pkg =", "").strip()  # Remove extra spaces
         print(f"Found packages: {flex}")
-        pm = ""
-        chk = detect_os()
-        if chk == "linux":
-            distro = input("What os are you using? (arch/debian/fedora): \n(Derivatives included)\n").lower()
-            if distro == "arch":
-                pm = "sudo pacman -S "
-            elif distro == "debian":
-                pm = "sudo apt install "
-            elif distro == "fedora":
-                pm = "sudo yum install "
-            else:
-                print("Unknown os. Please enter 'arch', 'debian' or 'fedora'.")
-                subprocess.call(['python', 'pkg.py'])
-        elif chk == "windows":
-            pm = "choco install "
-            print("Make sure you have choco installed")
-            time.sleep(1.5)
+        if os.path.isfile('/usr/flex/arch.cw'):
+            pm = "sudo pacman -S "
+        elif os.path.isfile('/usr/flex/deb.cw'):
+            pm = "sudo apt install "
+        elif os.path.isfile('/usr/flex/fed.cw'):
+            pm = "sudo yum install "
+        elif os.path.isfile('/usr/flex/suse.cw'):
+            pm = "sudo zypper install "
+        elif os.path.isfile('/usr/flex/void.cw'):
+            pm = "sudo xbps-install "
         else:
-            print("Unsupported os detected!")
-            quit()
+            pm = "choco install "
         time.sleep(1.5)
         os.system(pm + flex)
-        print("Packages installed succesfully")
-
+        print("Packages installed successfully")
 
 except FileNotFoundError:
-    print(f"An error occured while trying to read from the FLEXPKG file")
-    quit()
+    pass

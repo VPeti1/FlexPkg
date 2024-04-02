@@ -15,21 +15,34 @@ namespace fs = std::filesystem;
 void dw() {
     clear
     std::string distro;
-    std::cout << "Enter your Linux distribution (arch/debian/fedora):\n";
+    std::cout << "Enter your Linux distribution (arch/debian/fedora/void/opensuse):\n";
     std::cout << "(Derivatives included)\n";
     std::cin >> distro;
     if (distro == "arch") {
         system("sudo pacman -S git wget python");
+        system("sudo touch /usr/flex/arch.cw");
     } else if (distro == "debian") {
         system("sudo apt-get install git wget python");
+        system("sudo touch /usr/flex/deb.cw");
     } else if (distro == "fedora") {
         system("sudo dnf install git wget python");
+        system("sudo touch /usr/flex/fed.cw");
+    }
+    else if (distro == "void") {
+        system("sudo xbps-install git wget python");
+        system("sudo touch /usr/flex/void.cw");
+    }
+    else if (distro == "opensuse") {
+        system("sudo zypper install git wget python");
+        system("sudo touch /usr/flex/suse.cw");
     }
     else if (distro == "skip") {
 
     }
      else {
-        std::cout << "Unsupported distribution. Please choose arch, debian, or fedora." << std::endl;
+        std::cout << "Unsupported distribution. Please choose arch, debian, void, opensuse or fedora.\n";
+        clear
+        dw();
     }
 }
 
