@@ -19,21 +19,21 @@ void dw() {
     std::cout << "(Derivatives included)\n";
     std::cin >> distro;
     if (distro == "arch") {
-        system("sudo pacman -S git wget python");
+        system("sudo pacman -S git python gcc");
         system("sudo touch /usr/flex/arch.cw");
     } else if (distro == "debian") {
-        system("sudo apt-get install git wget python");
+        system("sudo apt-get install git python build-essential");
         system("sudo touch /usr/flex/deb.cw");
     } else if (distro == "fedora") {
-        system("sudo dnf install git wget python");
+        system("sudo dnf install git python gcc-c++");
         system("sudo touch /usr/flex/fed.cw");
     }
     else if (distro == "void") {
-        system("sudo xbps-install git wget python");
+        system("sudo xbps-install git python base-devel");
         system("sudo touch /usr/flex/void.cw");
     }
     else if (distro == "opensuse") {
-        system("sudo zypper install git wget python");
+        system("sudo zypper install git python gcc-c++");
         system("sudo touch /usr/flex/suse.cw");
     }
     else if (distro == "skip") {
@@ -58,7 +58,7 @@ int main() {
     system("sudo rm -rf /bin/flex");
     system("sudo mkdir /usr/flex");
     system("sudo git clone https://github.com/VPeti1/FlexPkg.git /usr/flex");
-    system("sudo wget https://raw.githubusercontent.com/VPeti1/CWAcces/main/run.out -O /bin/flex");
+    system("sudo g++ /usr/flex/run.cpp -o /bin/flex");
     system("sudo chmod +x /bin/flex");
     system("sudo rm -r /usr/flex/chococ.cpp /usr/flex/chococ.exe /usr/flex/installer.cpp /usr/flex/installer.out /usr/flex/LICENSE /usr/flex/README.md /usr/flex/run.cpp /usr/flex/run.out /usr/flex/examples /usr/flex/wininstall");
     std::cout << "FlexPkg Installer Completed!" << std::endl;
